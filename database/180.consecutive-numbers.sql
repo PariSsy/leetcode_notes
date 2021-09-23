@@ -1,7 +1,6 @@
 /* [180] Consecutive Numbers */
 
-
--- MySQL
+-- MySQL, solution 1
 with cte as
 (
     select
@@ -32,11 +31,12 @@ where diff1 = 0
 and diff2 = 0
 
 
--- User defined variables
+-- MySQL, solution 2 - User defined variables
 select distinct num ConsecutiveNums
-from ( select num, case 
-		when @record=num then @count:=@count+1
+from (
+  select num, case
+    when @record=num then @count:=@count+1
 		when @record:=num then @count:=1 end as n
-       from logs , (select @count:=0, @record:=null) r
-         ) a
+  from logs , (select @count:=0, @record:=null) r
+) a
 where a.n >= 3;
