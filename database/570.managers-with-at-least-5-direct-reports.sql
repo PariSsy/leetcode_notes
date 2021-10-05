@@ -21,6 +21,7 @@ from cte c
 left join Employee e on c.ManagerId = e.Id
 where ct >= 5
 
+-- Error message
 Output:
 {"headers": ["Name"], "values": [[""]]}
 Expected:
