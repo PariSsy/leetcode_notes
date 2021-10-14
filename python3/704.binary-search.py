@@ -18,6 +18,7 @@ class Solution:
         return -1
         
 # Solution 2 (Runtime = 292 ms)
+import bisect
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         index = bisect.bisect_left(nums, target)
