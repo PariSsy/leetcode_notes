@@ -33,3 +33,6 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
         return slow
+## Complexity analysis:
+## Time complexity = O(N)
+## Space complexity = O(1)
