@@ -2,7 +2,7 @@
 # Day 1
 # 217. Contains duplicate (Easy)
 
-# My solution, brute force (120 ms, 72%)
+# (New round) My solution 1, brute force (120 ms, 72%)
 from typing import List
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
@@ -22,3 +22,10 @@ class Solution:
             return False
         else:
             return True
+
+# (Rev 1) My solution 1 (108 ms, 98%)
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        if len(nums) > len(set(nums)):
+            return True
+        return False
