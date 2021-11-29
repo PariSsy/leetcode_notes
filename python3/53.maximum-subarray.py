@@ -50,3 +50,5 @@ class Solution:
             return max(best_combined_sum, left_half, right_half)
         
         return findBestSubarray(nums, 0, len(nums) - 1)
+## Time O(N logN)
+## Space O(logN)
