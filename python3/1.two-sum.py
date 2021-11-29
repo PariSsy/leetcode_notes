@@ -8,7 +8,6 @@
 from typing import List
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        # Brute force
         for i in range(len(nums)):
             num1 = nums[i]
             for j in range(len(nums)):
@@ -17,7 +16,30 @@ class Solution:
                     if i != j:
                         return [i, j]
 
-# Solution 2, optimal (52 ms, 97.5%)
+# Approach 1, brute force rewritten (runtime 4108 ms, 20%; memory 14.8 mb, 92%)
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if nums[j] == target - nums[i]:
+                    return [i, j]
+## Time: O(n^2)
+## Space: O(1)
+
+# Approach 3, one-pass hash table, original (runtime 52 ms, 97%; memory 15.4 mb, 42%)
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashmap = {}
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in hashmap:
+                return [i, hashmap[complement]]
+            hashmap[nums[i]] = i
+## Time: O(n)
+## Space: O(n)
+
+
+# Solution 2, one-pass hash table with enumerate() (52 ms, 97.5%)
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         seen = {}
@@ -25,5 +47,4 @@ class Solution:
             remaining = target - value
             if remaining in seen:
                 return [i, seen[remaining]]
-            else:
-                seen[value] = i
+            seen[value] = i
