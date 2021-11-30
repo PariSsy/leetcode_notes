@@ -20,6 +20,11 @@ class Solution:
                     out.append(num)
                     nums1.remove(num)
         return out
+## Time = O(m+n)
+## Space = O(max(m,n))
+## Based on Solution, this approach is similar to Hash Map,
+##  but without the count, it uses more space, whereas Hash Map
+##  has space complexity of O(min(n,m))
 
 # Solution 2, two pointers (Runtime 48 ms, 76%; Memory 14.4 MB, 42%)
 class Solution:
