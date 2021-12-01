@@ -30,6 +30,10 @@ class Solution:
                 nums[:] = [nums[n-1]] + nums[0:(n-1)]
             k -= 1
 
+#############
+# Solutions #
+#############
+
 # Solution 1, brute force (time limit exceeded)
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
@@ -43,6 +47,8 @@ class Solution:
             previous = nums[-1]
             for j in range(len(nums)):
                 nums[j], previous = previous, nums[j]
+## Time = O(n x k)
+## Space = O(1)
 
 # Solution 2, using extra array (341 ms, 31%)
 class Solution:
@@ -55,6 +61,8 @@ class Solution:
         for i in range(n):
             a[(i + k) % n] = nums[i]
         nums[:] = a
+## Time = O(n)
+## Space = O(n)
 
 ###########
 # Explain #
@@ -77,6 +85,7 @@ for i in range(n):
 # i is 5 , (i + k) % n is 1
 # i is 6 , (i + k) % n is 2
 
+
 # Solution 3, using cyclic replacements (272 ms, 43%)
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
@@ -98,6 +107,9 @@ class Solution:
                 if start == current:
                     break
             start += 1
+## Time = O(n)
+## Space = O(1)
+
 
 # Solution 4, using reverse (optimal, 212 ms, 87%)
 class Solution:
@@ -113,6 +125,9 @@ class Solution:
         self.reverse(nums, 0, n - 1)
         self.reverse(nums, 0, k - 1)
         self.reverse(nums, k, n - 1)
+## Time = O(n)
+## Space = O(1)
+
 ###########
 # Explain #
 ###########
@@ -121,6 +136,7 @@ Original List                   : 1 2 3 4 5 6 7
 After reversing all numbers     : 7 6 5 4 3 2 1
 After reversing first k numbers : 5 6 7 4 3 2 1
 After revering last n-k numbers : 5 6 7 1 2 3 4 --> Result
+
 
 #############
 # Test Case #
