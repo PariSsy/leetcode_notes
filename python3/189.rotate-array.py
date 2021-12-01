@@ -3,9 +3,20 @@
 # 189. Rotate array
 ## See test case at the bottom
 
-# My solution (time limit exceeded)
 from typing import List
 
+# (rev 1) my solution (216 ms, 79%; 25.5 mb, 85%)
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        n = len(nums)
+        k %= n
+        nums[:] = nums[n-k:] + nums[:n-k]
+
+
+# (new) My solution (time limit exceeded)
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
         """
@@ -105,11 +116,11 @@ class Solution:
 ###########
 # Explain #
 ###########
-# Let n = 7 and k = 3.
-# Original List                   : 1 2 3 4 5 6 7
-# After reversing all numbers     : 7 6 5 4 3 2 1
-# After reversing first k numbers : 5 6 7 4 3 2 1
-# After revering last n-k numbers : 5 6 7 1 2 3 4 --> Result
+Let n = 7 and k = 3.
+Original List                   : 1 2 3 4 5 6 7
+After reversing all numbers     : 7 6 5 4 3 2 1
+After reversing first k numbers : 5 6 7 4 3 2 1
+After revering last n-k numbers : 5 6 7 1 2 3 4 --> Result
 
 #############
 # Test Case #
