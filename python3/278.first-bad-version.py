@@ -2,12 +2,12 @@
 # Day 1
 # 278. First bad version
 
-# My solution (51 ms)
-
 # The isBadVersion API is already defined for you.
 # @param version, an integer
 # @return an integer
 # def isBadVersion(version):
+
+# (new) My solution, binary search (51 ms)
 
 class Solution:
     def firstBadVersion(self, n):
@@ -28,6 +28,7 @@ class Solution:
                 left = target + 1
 
 # Solution 2 (75 ms)
+
 class Solution:
     def firstBadVersion(self, n):
         """
@@ -43,4 +44,5 @@ class Solution:
             else:
                 left = mid + 1
         return left
-        
+## Time = O(log N)
+## Space = O(1)        
