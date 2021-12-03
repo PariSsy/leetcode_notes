@@ -2,8 +2,33 @@
 # Day 3
 # 167. Two sum II - input array is sorted
 
-# Solution 1 - two pointers (62 ms, 74%)
 from typing import List
+
+        
+# (rev 1) two pointers improved (64 ms, 70%; 14.7 mb, 34%)
+# Same as solution 1
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        # # (rev 1) two pointers, time limit exceeded
+        # for left in range(len(numbers)):
+        #     right = left + 1
+        #     while right < len(numbers):
+        #         if numbers[left] + numbers[right] == target:
+        #             return [left + 1, right + 1]
+        #         else: right += 1
+
+        left, right = 0, len(numbers) - 1
+        while left < right:
+            s = numbers[left] + numbers[right]
+            if s == target:
+                return [left + 1, right + 1]
+            if s < target:
+                left += 1
+            else:
+                right -= 1
+
+
+# Solution 1 - two pointers (62 ms, 74%)
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         start, end = 0, len(nums) - 1
@@ -16,6 +41,7 @@ class Solution:
             else:
                 start += 1
 
+
 # Solution 2 - dictionary (60 ms, 89%)
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -26,6 +52,7 @@ class Solution:
             if target - num in dic:
                 return [dic[target - num] + 1, i + 1]
             dic[num] = i
+
 
 # Solution 3 - binary search (80 ms, 39%)
 class Solution:
