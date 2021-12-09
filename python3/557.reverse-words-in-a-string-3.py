@@ -2,7 +2,7 @@
 # Day 4
 # 557. Reverse words in a string III
 
-# Two pointer solution (234 ms, 5%)
+# Approach 1, Two pointer solution (215 ms, 5%; 14.9 mb, 28%)
 class Solution:
     def reverseWords(self, s: str) -> str:
         """Two-pointers implementation, reverse each word within string"""
@@ -20,9 +20,10 @@ class Solution:
             l = r
         return s
 
-# Python built-in function
+# Approach 2, Python built-in function (81 ms, 23%; 14.7, 76%)
 class Solution:
     def reverseWords(self, s: str) -> str:
-    	s = s.split()
-    	for i in range(len(s)): s[i] = s[i][::-1]
-    	return " ".join(s)
+        s = s.split()
+        for i in range(len(s)):
+            s[i] = s[i][::-1]
+        return " ".join(s)
