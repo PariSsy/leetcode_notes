@@ -2,6 +2,8 @@
 # Day 5
 # 19. Remove Nth node from end of list
 
+# This question is pending revisit after learning linked list under Learn (Data Structure)
+
 # Solutions 1 - 2: https://leetcode.com/problems/remove-nth-node-from-end-of-list/discuss/1164537/Short-and-Simple-One-Pass-Solution-w-Explanation-or-Beats-100-or-No-dummy-node-required!
 # Solution 3: https://leetcode.com/problems/remove-nth-node-from-end-of-list/discuss/8802/3-short-Python-solutions
 
@@ -44,8 +46,8 @@ class Solution:
 
 # Solution 3 - value-shifting (57 ms, 14%)
 ## Instead of removing the nth node, this solution removes the nth value
-## It recursively determin the indexes (counting from back),
-##  then shofts the values for all indexes larger than n,
+## It recursively determine the indexes (counting from back),
+##  then shifts the values for all indexes larger than n,
 ##  and then always drop the head.
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
