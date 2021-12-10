@@ -4,14 +4,15 @@
 
 from typing import List
 
-# Solution 1, binary search, optimal (Runtime 32 ms, 99.31%; Memory 14.9 MB, 34%)
+# Solution, binary search, optimal (Runtime 32 ms, 99.31%; Memory 14.9 MB, 34%)
+## A sorted matrix m x n = a sorted array of length m x n
+## row = idx // n
+## col = idx % n
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         m = len(matrix)
-        if m == 0:
-            return False
         n = len(matrix[0])
-        # binary search
+
         left, right = 0, m*n-1
         while left <= right:
             pivot_idx = (left + right) // 2
