@@ -8,7 +8,80 @@
 
 import collections
 from typing import Collection, List
-# Solution 1, using Counter() - (Runtime 100 ms, 61%; Memory 14.4 MB, 15%)
+
+# Solution 1, Hash set (84 ms, 99%; 14.3 mb, 44%)
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        N = 9
+        # Use hash set to record the status
+        rows = [set() for _ in range(N)]
+        cols = [set() for _ in range(N)]
+        boxes = [set() for _ in range(N)]
+        
+        for r in range(N):
+            for c in range(N):
+                val = board[r][c]
+                # Check if the position is filled with number
+                if val == ".":
+                    continue
+                # Check the row
+                if val in rows[r]:
+                    return False
+                rows[r].add(val)
+                # Check the column
+                if val in cols[c]:
+                    return False
+                cols[c].add(val)
+                # Check the box
+                idx = (r // 3) * 3 + c // 3
+                if val in boxes[idx]:
+                    return False
+                boxes[idx].add(val)
+        return True
+## Time = O(N^2)
+## Space = O(N^2)
+
+
+# Solution 2, array of fixed length (84 ms, 99%; 14.3 mb, 44%)
+## The idea is, for each number, it'll appear only once in
+##  its row, its column, and its box respectively
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        N = 9
+        
+        # Use an array to record the status
+        rows = [[0] * N for _ in range(N)]
+        cols = [[0] * N for _ in range(N)]
+        boxes = [[0] * N for _ in range(N)]
+        
+        for r in range(N):
+            for c in range(N):
+                # Check if the position is filled with a number
+                if board[r][c] == ".":
+                    continue
+                
+                pos = int(board[r][c]) - 1
+                
+                # Check the row
+                if rows[r][pos] == 1:
+                    return False
+                rows[r][pos] = 1
+                
+                # Check the column
+                if cols[c][pos] == 1:
+                    return False
+                cols[c][pos] = 1
+                
+                # Check the box
+                idx = (r // 3) * 3 + c // 3
+                if boxes[idx][pos] == 1:
+                    return False
+                boxes[idx][pos] = 1
+        
+        return True
+
+
+# Discussion 1, using Counter() - (Runtime 100 ms, 61%; Memory 14.4 MB, 15%)
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:       
         # Solution 1, using Counter
@@ -20,7 +93,8 @@ class Solution:
             for x in ((c,i), (j,c), (i//3, j//3, c))
         ).values() or (1,)) # to handle empty board
 
-# Solution 2, using len(set) - (Runtime 92 ms, 90%; Memory 14.3 MB, 42%)
+
+# Discussion 2, using len(set) - (Runtime 92 ms, 90%; Memory 14.3 MB, 42%)
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         seen = sum((
@@ -31,7 +105,8 @@ class Solution:
         ), [])
         return len(seen) == len(set(seen))
 
-# Solution 3, using any() - (Runtime 92 ms, 90%; Memory 14.2 MB, 70%)
+
+# Discussion 3, using any() - (Runtime 92 ms, 90%; Memory 14.2 MB, 70%)
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         seen = set()
@@ -43,7 +118,8 @@ class Solution:
             for x in ((c, i), (j, c), (i//3, j//3, c))
         )
 
-# Solution 4, single traversal, optimal (Runtime 88 ms, 97%; Memory 14.4 MB 42%)
+
+# Discussion 4, single traversal, optimal (Runtime 88 ms, 97%; Memory 14.4 MB 42%)
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         # Solution 4, single traversal
@@ -59,7 +135,8 @@ class Solution:
                     boardMap[char].append((x,y))
         return True
 
-# Solution 5 (Runtime 100 ms, 61%; Memory 14.4, 42%)
+
+# Discussion 5 (Runtime 100 ms, 61%; Memory 14.4, 42%)
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         def valid(li):
