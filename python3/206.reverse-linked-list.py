@@ -38,6 +38,8 @@ class Solution:
         head.next.next = head
         head.next = None
         return p
+## Time = O(N)
+## Space = O(N)
 
 
 # Discussion 1 (by moby), iterative (45 ms, 23%; 15.7 mb, 46%)
