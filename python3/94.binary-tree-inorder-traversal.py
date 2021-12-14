@@ -10,7 +10,7 @@ class TreeNode:
         self.right = right
 
 
-# Approach 2 (OldCodingFarmer) (28 ms, 86%; 14.3 mb, 14%)
+# Approach 2 (OldCodingFarmer) - iteratively (28 ms, 86%; 14.3 mb, 14%)
 class Solution:
     def inorderTraversal(self, root):
         res, stack = [], []
