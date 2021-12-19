@@ -1,7 +1,7 @@
 # Algorithm Study Plan I
 # Day 6
 # 3. Longest substring without repeating characters
-
+## See Goodnotes -> LeetCode Draft for more details
 
 # Solution discussion 1 by kxguoniu
 # 56 ms, 85%; 14.3 mb, 81%
