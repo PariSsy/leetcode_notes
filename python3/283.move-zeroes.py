@@ -2,7 +2,23 @@
 # Day 3
 # 283. Move zeroes
 
-# (rev 1), two pointers (160 ms, 93%; 15.5 mb, 32%)
+
+ # (rev 2) two pointers (254 ms, 37%)
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        curr = 0
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                continue
+            while nums[curr] != 0 and curr < i:
+                curr += 1
+            nums[curr], nums[i] = nums[i], nums[curr]
+
+
+# (rev 1) two pointers (160 ms, 93%; 15.5 mb, 32%)
 # See solution 2 for a better writing
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
@@ -15,6 +31,7 @@ class Solution:
                 nums[anchor] = nums[i]
                 anchor += 1
         nums[anchor:] = [0] * (len(nums) - anchor)
+
 
 # (new) My solution using two pointers (reverse) (244 ms)
 ## reverse() function taken from 189
@@ -44,6 +61,7 @@ class Solution:
             
         nums[:] = a
         self.reverse(nums, 0, m - 1)
+
 
 # Solution 2 using two pointers, optimal coding writing (282 ms)
 class Solution:
