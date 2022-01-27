@@ -15,7 +15,18 @@ class Solution:
         return count
 
 
-# new, two pointers (51 ms, 8%; 14.2 mb, 72%)
+# (rev 1) two pointers (53 ms, 23%)
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        anchor = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[anchor] = nums[i]
+                anchor += 1
+        return anchor
+
+
+# (new) two pointers (51 ms, 8%; 14.2 mb, 72%)
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
         travel = replace = 0
